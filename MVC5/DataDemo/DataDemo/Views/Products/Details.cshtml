@@ -1,0 +1,114 @@
+﻿@model DataDemo.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Place order", "Create", "Orders")
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<h3>Orders for @Model.ProductName</h3>
+
+<table>
+    <tr>
+        <th>
+            OrderId
+        </th>
+
+        <th>
+            No. of Units
+        </th>
+
+        <th>
+            Order Date
+        </th>
+
+        <th>
+            Delivery Date
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+
+    @foreach (Order o in Model.Orders)
+    {
+        <tr>
+            <td>
+                @o.Id
+            </td>
+
+            <td>
+                @o.Units
+            </td>
+
+            <td>
+
+                @o.OrderDate
+            </td>
+
+            <td>
+                @o.DeliveryDate
+
+            </td>
+
+            <td>
+                <a class="btn btn-default"  href=@Url.Action("Details", "Orders", new {id= o.Id })>
+
+                  View details  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+
+
+                @Html.ActionLink("View order details", "Details", "Orders", new { id = o.Id })
+
+            </td>
+        </tr>
+
+    }
+
+
+</table>

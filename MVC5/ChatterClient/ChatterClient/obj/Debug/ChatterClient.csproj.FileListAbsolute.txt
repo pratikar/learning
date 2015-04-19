@@ -1,0 +1,13 @@
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\ChatterClient.exe.config
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\ChatterClient.exe
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\ChatterClient.pdb
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\Newtonsoft.Json.dll
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\System.Net.Http.Formatting.dll
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\Newtonsoft.Json.xml
+E:\Training\MVC5\ChatterClient\ChatterClient\bin\Debug\System.Net.Http.Formatting.xml
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.csprojResolveAssemblyReference.cache
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.Form1.resources
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.Properties.Resources.resources
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.csproj.GenerateResource.Cache
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.exe
+E:\Training\MVC5\ChatterClient\ChatterClient\obj\Debug\ChatterClient.pdb

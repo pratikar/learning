@@ -1,0 +1,150 @@
+﻿@model IEnumerable<jQueryTrial.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<input id="GetProductsAjax" name="GetProductsAjax" type="button" value="Get Products Ajax" />
+
+<div id="productlist" style="background-color:lightskyblue">
+
+</div>
+
+<div id="changePriceDiv" style="display: none">
+    <hr />
+    <table>
+      
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input id="txtName" name="txtName" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Description
+            </td>
+            <td>
+                <input id="txtDescription" name="txtDescription" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price
+            </td>
+            <td>
+                <input id="txtPrice" name="txtPrice" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Units
+            </td>
+            <td>
+                <input id="txtUnits" name="txtUnits" type="text" />
+            </td>
+        </tr>
+    </table>
+    <input id="AddProduct" name="AddProduct" type="button" value="Add product" />
+</div>
+
+@section Scripts {
+    <script>
+        $('#GetProductsAjax').click(function () {
+            $.ajax({
+                url: 'GetProducts',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html'
+
+            })
+            .success(function (result) {
+                $('#productlist').html(result);
+
+                $('#changePriceDiv').show().appendTo($('#productlist'));
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        });
+
+        $('#AddProduct').click(function () {
+
+            var name = $('#txtName').val();
+            var description = $('#txtDescription').val();
+            var price = $('#txtPrice').val();
+            var unites = $('#txtUnits').val();
+
+
+            $.ajax({
+
+                url: 'AddProduct',
+                contentType: 'application/html; charset=utf-8',
+                
+                data: {Name: name, Description: description, Prices: price, Units: unites},
+                type: 'GET',
+                dataType: 'html'
+            })
+            .success(function (result) {
+                $('#productlist').html(result);
+
+                $('#changePriceDiv').show().appendTo($('#productlist'));
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+
+        });
+    </script>
+}
